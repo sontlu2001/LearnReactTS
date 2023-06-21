@@ -1,70 +1,45 @@
 # Learn ReactJS with TypeScript
-## 1. Array
-Trong TypeScript, bạn có thể khai báo một mảng (array) bằng cách sử dụng cú pháp sau:
+## 1. Tuple.
+>Trong TypeScript, Tuple là một kiểu dữ liệu cho phép bạn định nghĩa một mảng có số lượng và kiểu dữ liệu cố định cho mỗi phần tử.
 
+Ví dụ, bạn có thể khai báo một Tuple chứa một số nguyên và một chuỗi như sau:
 ```ts
-let arrayName: TypeName[] = [];
+let person: [string, number] = ['John Doe', 30];
 ```
-Ở đây, **arrayName** là tên của mảng bạn muốn khai báo, và **TypeName** là kiểu dữ liệu mà mảng chứa. Bạn cũng có thể khởi tạo giá trị ban đầu cho mảng bằng cách cung cấp các phần tử trong cặp ngoặc vuông [].
-> Ví dụ, nếu bạn muốn khai báo một mảng chứa các số nguyên, bạn có thể làm như sau:
+## 2.Enum.
+>Enum là một kiểu dữ liệu trong TypeScript cho phép bạn định nghĩa một tập hợp các hằng số có tên. Mỗi hằng số trong Enum được gán một giá trị số nguyên tăng dần mặc định.
+
+Ví dụ, chúng ta đã định nghĩa một Enum có tên là Direction với các hằng số North, South, East, và West. Mặc định, North có giá trị 0, South có giá trị 1, East có giá trị 2, và West có giá trị 3. 
 ```ts
-let numbers: number[] = [1, 2, 3, 4, 5];
-```
-## 2. Object
-Trong TypeScript, kiểu dữ liệu của object có thể được định nghĩa bằng cách sử dụng TypeScript's type **annotations** hoặc **interfaces**. 
-> Ví dụ về cách định nghĩa kiểu dữ liệu cho object trong TypeScript sử dụng **type annotations**
-```ts
-let person: { name: string, age: number } = {
-  name: "John",
-  age: 30
-};
-```
-> Ví dụ về cách định nghĩa kiểu dữ liệu cho object trong TypeScript sử dụng **interfaces**
-```ts
-interface Person {
-  name: string;
-  age: number;
+enum Direction {
+  North,
+  South,
+  East,
+  West,
 }
-
-let person: Person = {
-  name: "John",
-  age: 30
-};
 ```
-## 3. Các cách định nghĩa kiểu dữ liệu cho mảng các object.
-Nếu bạn muốn khai báo một mảng các object "person" có thuộc tính "name" và "age" có thể thực hiện một trong những cách như sau:
-* Sử dụng **Interface**:
+**Chú ý:** Bạn cũng có thể gán giá trị tùy chỉnh cho các hằng số trong Enum ví dụ như sau:
 ```ts
-interface Person {
-  name: string;
-  age: number;
+enum Direction {
+  North = "N",
+  South = "S",
+  East = "E",
+  West = "W",
 }
-
-let people: Person[] = [
-  { name: "John", age: 30 },
-  { name: "Alice", age: 25 },
-];
 ```
-* Sử dụng **Type Alias**:
+## 3. Union 
+> Union Types cho phép bạn khai báo một biến có thể chứa nhiều kiểu dữ liệu khác nhau. Bạn sử dụng ký hiệu "|" để liệt kê các kiểu dữ liệu.
+Ví dụ:
 ```ts
-type Person = {
-  name: string;
-  age: number;
-};
-
-let people: Person[] = [
-  { name: "John", age: 30 },
-  { name: "Alice", age: 25 },
-]
+let variable: string | number;
+variable = 'Hello';
+variable = 10;
 ```
-* Sử dụng **class**:
+## 4. Literal types 
+> Literal types trong TypeScript cho phép bạn chỉ định một giá trị cụ thể cho biến hoặc tham số. Điều này có nghĩa là bạn có thể xác định một kiểu dữ liệu chỉ chấp nhận một giá trị cụ thể.
 ```ts
-class Person {
-  constructor(public name: string, public age: number) {}
-}
-
-let people: Person[] = [
-  new Person("John", 30),
-  new Person("Alice", 25),
-];
+let statusCode: 200 | 400 | 404;
+statusCode = 200; // Hợp lệ
+statusCode = 400; // Hợp lệ
+// statusCode = 500; // Không hợp lệ, chỉ chấp nhận 200, 400 hoặc 404
 ```

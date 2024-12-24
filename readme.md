@@ -1,1 +1,3 @@
-# Learn ReactJS with TypeScript
+# Khóa học React Awesome
+
+Tác giả: Dư Thanh Được
